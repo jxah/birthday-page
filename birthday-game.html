@@ -1,9 +1,111 @@
-<DOCTYPE html>
+
+<!DOCTYPE html>
 <html>
-<head>
-<title>Trivia game!</title>
-</head>
-<body>
-Coming soon! 
-</body>
+    <head>
+        <title>
+            game for my birthday
+        </title>
+    </head>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <style>
+        .w3-btn {margin-bottom:10px;}
+    </style>
+    <body>
+
+        <div class="w3-container">
+        <!-- Write the questions inside the h2 tag -->
+        <h2 id="pregunta">Jacobo would like you to answer a few question. Are you ready?</h2>
+        <p></p>
+        <p>
+          <button id="opA" class="w3-btn w3-white w3-border w3-border-red w3-round-large" onclick="daAlert(checkResult('opA'))"> Start </button>
+          <button id="opB" class="w3-btn w3-white w3-border w3-border-red w3-round-large" onclick="daAlert(checkResult('opB'))"> B</button>
+         <button id="opC" class="w3-btn w3-white w3-border w3-border-red w3-round-large" onclick="daAlert(checkResult('opC'))"> C</button>
+          </p>
+        </div>
+        
+        <script>
+            var buttonIdList = ["opA","opB","opC"];
+            function checkResult(selectedID) {
+                if (selectedID == "opA") return (allQ[i].daCorrect == 0);
+                if (selectedID == "opB") return (allQ[i].daCorrect == 1);
+                if (selectedID == "opC") return (allQ[i].daCorrect == 2);
+                return false;
+            }   
+            function daAlert(result) {
+                if (i > 0) {
+                if (result) {
+                    alert('You are correct!'); 
+                    myFunction();
+                }
+                else alert('Try again!');
+            }
+                if (i == 0) {
+                    myFunction()
+                }
+            }
+           
+            function myFunction() {
+                //check the right one                 
+                i = i + 1;
+                // var buttonIdList = ["opA","opB","opC"];
+                if (i == allQ.length) {
+                    for (iopt=0; iopt<3; ++iopt) {document.getElementById(buttonIdList[iopt]).style.display = "none";}
+                    document.getElementById("pregunta").innerHTML = 'Jacobo says: "Thank you for playing!"';
+                    
+                }
+                // alert(i);
+                document.getElementById("pregunta").innerHTML = allQ[i].pregunta ;
+                for (iopt=0; iopt<3; ++iopt) {document.getElementById(buttonIdList[iopt]).style.display = "none";};
+                for (iopt=0; iopt<allQ[i].daOptions.length; ++iopt) {
+                    var theButton = document.getElementById(buttonIdList[iopt]);
+                    theButton.innerHTML =  allQ[i].daOptions[iopt];
+                    theButton.style.display = "";
+                }
+            }
+            var qIntro = {
+                pregunta: "Jacobo would like you to answer a few question. Are you ready?",
+                daCorrect: 0,
+                daOptions: ["Yes", "No"]
+            }
+
+            var q18 = {
+              pregunta:"What type of animal is a bat?",
+              daCorrect: 1,
+              daOptions: ["Bird", "Mammal", "Reptile"]
+            }
+
+            var q19 = {
+              pregunta:"Identical twins have the same fingerprints",
+              daCorrect: 1,
+              daOptions: ["True", "False"]
+            }
+            
+            var q21 = {
+                pregunta: "What is Eyjafjallajökull?",
+                daCorrect: 2,
+                daOptions: ["A made-up word","An album released by singer Björk in 2014","An Icelandic volcano"]
+            }
+
+            var q12 = {
+                pregunta: "How should you deal with a charging rhino?",
+                daCorrect: 0,
+                daOptions: ["Keep quiet and throw a rock to one side (quietly)", "Shout and scream as loudly as you can","Punch it on the nose"]
+            }
+
+            var q27 = {
+                pregunta: "What is a baby kangaroo called?",
+                daCorrect: 0,
+                daOptions: ["A joey", "A sheila", "A billy"] 
+            }
+
+            allQ = [qIntro,q12,q18,q19,q21,q27];
+            var i = 0;
+            for (iopt=1; iopt<3; ++iopt) {document.getElementById(buttonIdList[iopt]).style.display = "none";};
+
+            // myFunction();
+
+            </script>
+            <a href="index.html">1#Mybirthday</a>
+        </body>
+
 </html>
